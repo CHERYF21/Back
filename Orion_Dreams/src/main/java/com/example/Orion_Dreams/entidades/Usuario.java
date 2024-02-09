@@ -1,5 +1,6 @@
 
-package entidades;
+package com.example.Orion_Dreams.entidades;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

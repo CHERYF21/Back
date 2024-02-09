@@ -1,5 +1,5 @@
 
-package exepciones;
+package com.example.Orion_Dreams.excepciones;
 
 
 public class MiException extends Exception {
