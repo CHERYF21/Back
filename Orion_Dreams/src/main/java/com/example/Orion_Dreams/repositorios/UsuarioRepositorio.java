@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface UsuarioRepositorio  extends JpaRepository<Usuario, String>{
+public interface UsuarioRepositorio  extends JpaRepository<Usuario, Long>{
     @Query("SELECT u FROM Usuario u")
     public List<Usuario> verUsuario();
 }

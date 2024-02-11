@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class PortalControlador {
     
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(){
         
     return "index.html";
