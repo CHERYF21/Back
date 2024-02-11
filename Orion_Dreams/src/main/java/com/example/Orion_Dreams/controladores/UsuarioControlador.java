@@ -2,26 +2,29 @@
 package com.example.Orion_Dreams.controladores;
 
 import com.example.Orion_Dreams.entidades.Usuario;
+import com.example.Orion_Dreams.excepciones.MiException;
 import com.example.Orion_Dreams.repositorios.UsuarioRepositorio;
-import java.util.List;
+import com.example.Orion_Dreams.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
 @RestController
 public class UsuarioControlador {
 
  @Autowired
-    private UsuarioRepositorio usuarioRepositorio;
-
-    // Otros métodos existentes...
+   private UsuarioServicio usuarioServicio;
 
     @PostMapping("/usuarios")
-    public Usuario crearUsuario(@RequestBody Usuario usuario) {
-        return usuarioRepositorio.save(usuario);
+    public ResponseEntity<String> crearUsuario(@RequestBody Usuario usuario) {
+        try {
+            usuarioServicio.guardarUsuario(usuario.getNombre(), usuario.getEmail(), usuario.getPassword());
+            return new ResponseEntity<>("Usuario creado correctamente", HttpStatus.CREATED);
+        } catch (MiException ex ) {
+            return new ResponseEntity<>("Error al crear usuario: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

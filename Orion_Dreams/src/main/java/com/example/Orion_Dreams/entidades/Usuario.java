@@ -12,7 +12,7 @@ public class Usuario {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid" , strategy = "uuid2")
-    private Long id;
+    private String id;
     private String nombre;
     private String password;
     private String email;
@@ -25,13 +25,15 @@ public class Usuario {
     
     //Getter and Setter
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
+
+   
 
     public String getNombre() {
         return nombre;
