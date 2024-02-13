@@ -31,40 +31,10 @@ public class UsuarioServicio {
           usuarioRepositorio.save(usuario);
       }
       
-       public void guardarUsuario(String nombre, String email, String password) throws MiException {
-        validar( nombre,  password, email);
-        usuarioRepositorio.guardarNuevoUsuario(nombre, email, password);
+       public List<Usuario> listarUsuarios(){
+        return usuarioRepositorio.findAll();
     }
       
-      //@Transactional
-      //public void modificarUsuario(String nombre, String password,String email) throws MiException{
-          
-        //validar( nombre,  password, email);
-          
-        //Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-        
-        //if(respuesta.isPresent()){
-        //Usuario usuario = respuesta.get();
-        
-        //usuario.setNombre(nombre);
-        
-        //usuarioRepositorio.save(usuario);
-        //}
-    //}
-      
-        //List<Usuario> usuarios =  new ArrayList();
-        
-        ///usuarios = usuarioRepositorio.findAll();
-        
-        ///return usuarios;
-    //}
-       
-       
-        public List<Usuario> listarUsuarios() {
-            
-            return usuarioRepositorio.findAll();
-        }
-     
     private void validar(String nombre, String password,String email) throws MiException{
         
         if(nombre == null || nombre.isEmpty()){
@@ -81,6 +51,7 @@ public class UsuarioServicio {
     }
 
     public void guardarUsuario(Usuario usuario) {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
